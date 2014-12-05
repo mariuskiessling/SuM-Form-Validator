@@ -1,3 +1,5 @@
+package formvalidator;
+
 import sum.komponenten.*;
 import sum.kern.Farbe;
 import java.util.*;
@@ -8,7 +10,7 @@ import java.util.*;
  * for the SuM textinputs.
  *
  * @author Marius Kiessling
- * @version 17.11.2014
+ * @version 06.12.2014
  */
 public class Formvalidator {
 

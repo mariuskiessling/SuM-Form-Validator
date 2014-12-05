@@ -1,12 +1,13 @@
+package formvalidator;
+
 /**
  * Just an example class to show the usage of the validator class.
  *
  * @author Marius Kiessling
- * @version 17.11.2014
+ * @version 06.12.2014
  */
 
 import sum.komponenten.*;
-import sum.werkzeuge.*;
 import sum.ereignis.*;
 
 public class ValidatorExample extends EBAnwendung {
