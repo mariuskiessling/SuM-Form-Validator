@@ -24,11 +24,11 @@ public class Field {
         this.textfeld = field;
     }
 
-    public Textfeld getField() {
+    public Textfeld getTextfeld() {
        return this.textfeld;
     }
 
-    public Textbereich getField() {
+    public Textbereich getTextbereich() {
         return this.textbereich;
     }
 

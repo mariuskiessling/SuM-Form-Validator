@@ -71,12 +71,12 @@ public class Formvalidator {
 
                 } else {
                     if(currentField.getValidationMode() == NUMERIC_VALIDATION) {
-                        if(this.numericValidation(currentField)) {
+                        if(this.numericValidation(currentField.getTextfeld())) {
                             error = false;
-                            this.debugValidationItem(currentField, VALID);
+                            this.debugValidationItem(currentField.getTextfeld(), VALID);
                         } else {
                             error = true;
-                            this.debugValidationItem(currentField, INVALID);
+                            this.debugValidationItem(currentField.getTextfeld(), INVALID);
                         }
                     }
 
@@ -84,22 +84,22 @@ public class Formvalidator {
                 }
 
                 if(this.mainValidationMode == NUMERIC_VALIDATION) {
-                    if(this.numericValidation(currentField)) {
+                    if(this.numericValidation(currentField.getTextfeld())) {
                         error = false;
-                        this.debugValidationItem(currentField, VALID);
+                        this.debugValidationItem(currentField.getTextfeld(), VALID);
                     } else {
                         error = true;
-                        this.debugValidationItem(currentField, INVALID);
+                        this.debugValidationItem(currentField.getTextfeld(), INVALID);
                     }
                 }
 
                 if(this.mainValidationMode == ALPHANUMERIC_VALIDATION) {
-                    if(this.alphanumericValidation(currentField)) {
+                    if(this.alphanumericValidation(currentField.getTextfeld())) {
                         error = false;
-                        this.debugValidationItem(currentField, VALID);
+                        this.debugValidationItem(currentField.getTextfeld(), VALID);
                     } else {
                         error = true;
-                        this.debugValidationItem(currentField, INVALID);
+                        this.debugValidationItem(currentField.getTextfeld(), INVALID);
                     }
                 }
             }
