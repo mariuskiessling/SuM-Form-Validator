@@ -12,16 +12,18 @@ import java.util.*;
  * @author Marius Kiessling
  * @version 06.12.2014
  */
+
 public class Formvalidator {
 
     final int NUMERIC_VALIDATION = 1;
     final int ALPHANUMERIC_VALIDATION = 2;
+    final int CUSTOM_VALIDATION = 3;
     final boolean VALID = true;
     final boolean INVALID = false;
 
     private boolean debugging = false;
     protected int mainValidationMode;
-    List<Textfeld> elements = new ArrayList<Textfeld>();
+    List<Field> elements = new ArrayList<Field>();
 
     /**
      * This method is called on creation. The only
@@ -37,32 +39,49 @@ public class Formvalidator {
      * This method registers the passed form field to
      * the fields that will be checked in the validate
      * method.
-     * @param Textfeld field The form field that should be registred.
+     * @param Textfeld field The form field that should be registered.
      * @return Nothing.
      */
     public void register(Textfeld field) {
-        this.elements.add(field);
+        Field toField = new Field(field);
+        this.elements.add(toField);
     }
 
     /**
-     * This method validates all registred form fields. If no
-     * field is registred the method will do nothing and return
+     * This method validates all registered form fields. If no
+     * field is registered the method will do nothing and return
      * an error.
      * @return boolean If error accrued return false if not true.
      */
     public boolean validate() {
         if(this.elements.size() == 0) {
-            System.err.println("ERROR: No elements registred! Validation aborted!");
+            System.err.println("ERROR: No elements registered! Validation aborted!");
 
             return false;
         } else {
             boolean error = false;
 
             if(debugging == true) {
-                System.out.println("Validation stareted with " + this.elements.size() + " elements and validation mode " + this.mainValidationMode + "!");
+                System.out.println("Validation started with " + this.elements.size() + " elements and validation mode " + this.mainValidationMode + "!");
             }
 
-            for(Textfeld currentField : this.elements){
+            for(Field currentField : this.elements){
+
+                if(currentField.getValidationMode() != NUMERIC_VALIDATION || currentField.getValidationMode() != ALPHANUMERIC_VALIDATION || currentField.getValidationMode() != CUSTOM_VALIDATION) {
+
+                } else {
+                    if(currentField.getValidationMode() == NUMERIC_VALIDATION) {
+                        if(this.numericValidation(currentField)) {
+                            error = false;
+                            this.debugValidationItem(currentField, VALID);
+                        } else {
+                            error = true;
+                            this.debugValidationItem(currentField, INVALID);
+                        }
+                    }
+
+
+                }
 
                 if(this.mainValidationMode == NUMERIC_VALIDATION) {
                     if(this.numericValidation(currentField)) {
